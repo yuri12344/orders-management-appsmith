@@ -1,0 +1,3 @@
+UPDATE returns
+  SET status = 'Received'
+  WHERE id = {{ tbl_returns.selectedRow.OrderID }};

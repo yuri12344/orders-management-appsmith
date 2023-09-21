@@ -1,0 +1,38 @@
+{
+    "boxShadow": "none",
+    "widgetName": "IconButton2Copy",
+    "onClick": "{{showModal('Modal1')}}",
+    "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+    "displayName": "Icon Button",
+    "iconSVG": "/static/media/icon.1a0c634ac75f9fa6b6ae7a8df882a3ba.svg",
+    "searchTags": [
+        "click",
+        "submit"
+    ],
+    "topRow": 1,
+    "bottomRow": 5,
+    "parentRowSpace": 10,
+    "type": "ICON_BUTTON_WIDGET",
+    "hideCard": false,
+    "animateLoading": true,
+    "parentColumnSpace": 13.9814453125,
+    "dynamicTriggerPathList": [{"key": "onClick"}],
+    "leftColumn": 58,
+    "dynamicBindingPathList": [
+        {"key": "buttonColor"},
+        {"key": "borderRadius"}
+    ],
+    "isDisabled": false,
+    "key": "33i1j8atzx",
+    "isDeprecated": false,
+    "rightColumn": 60,
+    "iconName": "plus",
+    "widgetId": "p77lk0nups",
+    "isVisible": true,
+    "version": 1,
+    "parentId": "4nwo4b7zxp",
+    "renderMode": "CANVAS",
+    "isLoading": false,
+    "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+    "buttonVariant": "PRIMARY"
+}

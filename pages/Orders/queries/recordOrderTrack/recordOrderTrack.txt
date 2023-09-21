@@ -1,0 +1,7 @@
+INSERT INTO order_track
+  (order_id, order_status_id)
+VALUES
+  (
+    {{ appsmith.store.order.Order_id }},
+    {{ this.params.orderStatusId }}
+  );

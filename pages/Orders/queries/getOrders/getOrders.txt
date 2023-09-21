@@ -1,0 +1,9 @@
+SELECT public.order.*, location.address1, person.first_name, person.last_name, person.phone, person.email, order_status.label AS status
+FROM public.order
+INNER JOIN location ON public.order.shipping_address = location.id
+INNER JOIN order_status ON public.order.order_status_id = order_status.id
+INNER JOIN account ON public.order.account_id = account.id
+INNER JOIN person ON account.customer_id = person.id
+ORDER BY id ASC
+LIMIT {{tbl_orders.pageSize}} OFFSET {{(tbl_orders.pageNo - 1) * tbl_orders.pageSize}};
+

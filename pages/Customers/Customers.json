@@ -1,0 +1,70 @@
+{
+  "unpublishedPage": {
+    "name": "Customers",
+    "slug": "customers",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 1224,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 1090,
+          "containerStyle": "none",
+          "snapRows": 99,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 83,
+          "minHeight": 1010,
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Customers_utils.getCustomerOrders",
+              "name": "utils.getCustomerOrders",
+              "collectionId": "Customers_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const customerOrders = await getCustomerOrders.run();\n  const data = customerOrders.map(o => {\n    return {\n      OrderId: o.id,\n      OrderDate: new Date(o.created).toDateString(),\n      Items: o.order_line_count,\n      Amount: o.total.toLocaleString('en-US', {\n        style: 'currency',\n        currency: 'USD'\n      }),\n      Status: o.label\n    };\n  });\n  return data;\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Customers_utils.getCustomers",
+              "name": "utils.getCustomers",
+              "collectionId": "Customers_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const customers = await getCustomers.run();\n  return customers.map(c => {\n    return {\n      ID: utils.idConverter(c.id),\n      CustomerID: c.id,\n      Name: c.first_name + ' ' + c.last_name,\n      Phone: c.phone,\n      Email: c.email,\n      BillingAddress: `${c.address1}${c.city || ''}${c.country || ''}`,\n      ShippingAddress: `${c.address1}${c.city || ''}${c.country || ''}`\n    };\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Customers",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "650c425727a31f44051468fd_650c42797dfa975bca462ef4"
+}

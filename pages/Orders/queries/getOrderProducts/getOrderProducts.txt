@@ -1,0 +1,6 @@
+SELECT order_line.*, product_variant.sku, product_variant.price, product.image, "order".total, "order".taxes, "order".subtotal, product.name
+FROM order_line 
+INNER JOIN product_variant ON order_line.product_variant_id = product_variant.id
+INNER JOIN "order" ON order_line.order_id = "order".id
+INNER JOIN product ON product_variant.product_id = product.id
+WHERE order_id = {{appsmith.store.order.Order_id}};

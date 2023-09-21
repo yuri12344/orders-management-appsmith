@@ -1,0 +1,4 @@
+SELECT account.*, person.first_name, person.last_name, person.email, person.phone, location.address1, location.city, location.state, location.country, location.postal_code FROM account
+LEFT JOIN person ON account.customer_id = person.id
+LEFT JOIN location ON person.id = location.person
+LIMIT {{tbl_customers.pageSize}} OFFSET {{(tbl_customers.pageNo - 1) * tbl_customers.pageSize}};

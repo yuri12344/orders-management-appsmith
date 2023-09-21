@@ -1,0 +1,103 @@
+{
+  "unpublishedPage": {
+    "name": "Dashboard",
+    "slug": "dashboard",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 4896,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 1080,
+          "containerStyle": "none",
+          "snapRows": 124,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 86,
+          "minHeight": 1292,
+          "dynamicTriggerPathList": [],
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Dashboard_getOrders",
+              "name": "getOrders",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 20000
+            },
+            {
+              "id": "Dashboard_utils.dashboardMetrics",
+              "name": "utils.dashboardMetrics",
+              "collectionId": "Dashboard_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const orders = await getOrders.run();\n  const returnsCount = await getReturnsCount.run();\n  const allOrders = orders.length;\n  const fulfilledOrders = orders.filter(o => o.status === 'DELIVERED').length;\n  const unfulfilledOrders = orders.filter(o => o.status === 'UNFULFILLED').length;\n  const cancelledOrders = orders.filter(o => o.status === 'CANCELLED').length;\n  const shippedOrders = orders.filter(o => o.status === 'SHIPPED').length;\n  const packedOrders = orders.filter(o => o.status === 'PACKED').length;\n  const totalOrderValue = orders.reduce((a, b) => a + b.total, 0);\n  const formattedOrderValueAmount = totalOrderValue.toLocaleString('en-US', {\n    style: 'currency',\n    currency: 'USD'\n  }).slice(0, -3);\n  return {\n    allOrders,\n    fulfilledOrders,\n    unfulfilledOrders,\n    cancelledOrders,\n    shippedOrders,\n    packedOrders,\n    returnsCount: returnsCount[0].count,\n    totalOrderValue: formattedOrderValueAmount\n  };\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Dashboard_utils.topOrderedProductsChart",
+              "name": "utils.topOrderedProductsChart",
+              "collectionId": "Dashboard_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const orderedProductsCount = await getOrderProductCount.run();\n  return orderedProductsCount.map(p => {\n    return {\n      x: p.name,\n      y: p.variant_count\n    };\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Dashboard_utils.calculateAvFulfilTIme",
+              "name": "utils.calculateAvFulfilTIme",
+              "collectionId": "Dashboard_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const data = await getReturns.run();\n  const orders = {};\n  data.forEach(row => {\n    if (!orders[row.order_id]) {\n      orders[row.order_id] = {\n        order_id: row.order_id,\n        first_created: row.created,\n        last_created: row.created,\n        count: 1\n      };\n    } else {\n      const order = orders[row.order_id];\n      if (row.created < order.first_created) {\n        order.first_created = row.created;\n      }\n      if (row.created > order.last_created) {\n        order.last_created = row.created;\n      }\n      order.count += 1;\n    }\n  });\n  const averages = [];\n  Object.values(orders).forEach(order => {\n    if (order.count > 1) {\n      const firstDate = new Date(order.first_created);\n      const lastDate = new Date(order.last_created);\n      const diffTime = Math.abs(lastDate - firstDate);\n      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));\n      averages.push({\n        order_id: order.order_id,\n        avg_time: diffDays\n      });\n    }\n  });\n  const total = averages.reduce((acc, {avg_time}) => acc + avg_time, 0);\n  const overallAvg = total / averages.length;\n  return overallAvg ? overallAvg.toFixed(2) : 1.2;\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Dashboard_utils.revenueChart",
+              "name": "utils.revenueChart",
+              "collectionId": "Dashboard_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const revenueByMonth = await getRevenueByMonth.run();\n  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];\n  return revenueByMonth.map(r => {\n    return {\n      x: months[parseInt(r.month.substring(5)) - 1] + ' ' + r.month.substring(2, 4),\n      y: r.total\n    };\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Dashboard",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "650c425727a31f44051468fd_650c42797dfa975bca462ef0"
+}

@@ -1,0 +1,11 @@
+SELECT
+  to_char(created, 'YYYY-MM') AS month,
+  SUM(total) AS total
+FROM
+  "order"
+WHERE
+  created >= date_trunc('month', current_date - interval '11 months')
+GROUP BY
+  to_char(created, 'YYYY-MM')
+ORDER BY
+  month;

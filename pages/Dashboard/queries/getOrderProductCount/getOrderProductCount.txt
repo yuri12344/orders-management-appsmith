@@ -1,0 +1,14 @@
+SELECT 
+  ol.product_variant_id, 
+  COUNT(*) as variant_count, 
+  pv.product_id,  
+  pv.price,
+	p.name
+FROM order_line ol 
+LEFT JOIN product_variant pv 
+  ON ol.product_variant_id = pv.id
+LEFT JOIN product p ON pv.product_id = p.id
+GROUP BY ol.product_variant_id, pv.product_id, pv.price, p.name
+ORDER BY variant_count DESC
+LIMIT 5;
+

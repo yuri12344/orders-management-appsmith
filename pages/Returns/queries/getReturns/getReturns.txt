@@ -1,0 +1,8 @@
+SELECT returns.*, order_line.product_variant_id, order_line.quantity, product_variant.product_id AS main_product, product_variant.price AS price, product.name, product.type AS category, location.label AS warehouse
+FROM returns
+INNER JOIN order_line ON returns.product_id = order_line.id
+INNER JOIN product_variant ON order_line.product_variant_id = product_variant.id
+INNER JOIN product ON product_variant.product_id = product.id
+LEFT JOIN location ON returns.warehouse_id = location.id
+ORDER BY id ASC
+LIMIT {{tbl_returns.pageSize}} OFFSET {{(tbl_returns.pageNo - 1) * tbl_returns.pageSize}};

@@ -1,0 +1,81 @@
+{
+  "unpublishedPage": {
+    "name": "Returns",
+    "slug": "returns",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 1224,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 1100,
+          "containerStyle": "none",
+          "snapRows": 99,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 83,
+          "minHeight": 1010,
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Returns_getReturns",
+              "name": "getReturns",
+              "confirmBeforeExecute": false,
+              "pluginType": "DB",
+              "jsonPathKeys": [
+                "tbl_returns.pageSize",
+                "(tbl_returns.pageNo - 1) * tbl_returns.pageSize"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Returns_utils.getReturns",
+              "name": "utils.getReturns",
+              "collectionId": "Returns_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const returns = await getReturns.run();\n  const fromDate = dat_from.formattedDate || null;\n  const toDate = dat_to.formattedDate || null;\n  let filteredReturns = returns;\n  if (fromDate && toDate) {\n    filteredReturns = returns.filter(k => new Date(k.created) >= new Date(fromDate) && new Date(k.created) <= new Date(toDate));\n  }\n  if (sel_status.selectedOptionValue) {\n    filteredReturns = returns.filter(k => k.status === sel_status.selectedOptionValue);\n  }\n  return filteredReturns.map(r => {\n    return {\n      Id: r.id,\n      ID: utils.idConverter(r.id),\n      OrderID: r.order_id,\n      Product: r.name,\n      Description: r.category,\n      ShippedQty: r.quantity,\n      Quantity: r.returned_quantity,\n      Amount: r.price.toLocaleString('en-US', {\n        style: 'currency',\n        currency: 'USD'\n      }),\n      ReturnOrderID: 1,\n      WarehouseName: r.label,\n      ReturnedDate: new Date(r.returned_date).toDateString(),\n      Reason: r.reason,\n      Status: r.status,\n      Warehouse: r.warehouse,\n      WarehouseId: r.warehouse_id\n    };\n  }).sort((a, b) => a.id - b.id);\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Returns_utils.getWarehouses",
+              "name": "utils.getWarehouses",
+              "collectionId": "Returns_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const returns = await getReturns.run();\n  const warehouses = returns.map(p => {\n    return {\n      id: p.warehouse_id,\n      name: p.warehouse\n    };\n  });\n  const sanitisedWarehouses = warehouses.filter(warehouse => warehouse.name !== null && warehouse.name.trim() !== \"\");\n  if (!returns || returns.length < 1) {\n    return [{\n      id: 1,\n      name: 'Jamison Yard'\n    }, {\n      id: 2,\n      name: 'Brit Avenue'\n    }];\n  }\n  const uniqueWarehousesRaw = {};\n  for (let i = 0; i < sanitisedWarehouses.length; i++) {\n    uniqueWarehousesRaw[sanitisedWarehouses[i].name] = {\n      id: sanitisedWarehouses[i].id\n    };\n  }\n  const uniqueWarehouses = Object.keys(uniqueWarehousesRaw);\n  return uniqueWarehouses.map(category => {\n    return {\n      id: uniqueWarehousesRaw[category].id,\n      name: category\n    };\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Returns",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "650c425727a31f44051468fd_650c42797dfa975bca462ef8"
+}

@@ -1,0 +1,8 @@
+INSERT INTO location
+  (type, person, address1)
+VALUES
+  (
+    'ADDRESS',
+    {{this.params.personId}},
+    {{ inp_addBillingAddress.text || inp_addShippingAddress.text }}
+  );

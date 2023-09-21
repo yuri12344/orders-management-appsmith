@@ -1,0 +1,6 @@
+UPDATE returns
+  SET status = 'Return Processed',
+	reason = {{inp_reason.text}},
+	warehouse_id = {{sel_warehouse.selectedOptionValue}},
+	payment = {{sel_payment.selectedOptionValue}}
+  WHERE id = {{ tbl_returns.selectedRow.OrderID }};

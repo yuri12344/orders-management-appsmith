@@ -1,0 +1,68 @@
+{
+  "unpublishedPage": {
+    "name": "Products",
+    "slug": "products",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 1224,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 1120,
+          "containerStyle": "none",
+          "snapRows": 99,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 83,
+          "minHeight": 1010,
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "Products_utils.getCategories",
+              "name": "utils.getCategories",
+              "collectionId": "Products_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const products = await getProducts.run();\n  const categories = products.map(p => p.category);\n  const sanitisedCategories = categories.filter(category => category !== null && category.trim() !== \"\");\n  if (!products || products.length < 1) {\n    return [{\n      id: 1,\n      name: 'Food'\n    }, {\n      id: 2,\n      name: 'Gadget'\n    }];\n  }\n  const uniqueCategoriesRaw = {};\n  for (let i = 0; i < sanitisedCategories.length; i++) {\n    uniqueCategoriesRaw[sanitisedCategories[i]] = true;\n  }\n  const uniqueCategories = Object.keys(uniqueCategoriesRaw);\n  return uniqueCategories.map((category, index) => {\n    return {\n      id: index,\n      name: category\n    };\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "Products_utils.getProducts",
+              "name": "utils.getProducts",
+              "collectionId": "Products_utils",
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "async () => {\n  const products = await getProducts.run();\n  const categoryFilter = sel_category.selectedOptionValue;\n  let filteredProducts = products;\n  if (categoryFilter) {\n    filteredProducts = products.filter(p => p.category === categoryFilter);\n  }\n  return filteredProducts.map(p => {\n    return {\n      ID: utils.idConverter(p.id),\n      Name: p.name,\n      SKU: p.sku,\n      Category: p.category,\n      UnitPrice: p.price.toLocaleString('en-US', {\n        style: 'currency',\n        currency: 'USD'\n      }),\n      Stock: p.total_stock,\n      ProductID: p.id\n    };\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Products",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "650c425727a31f44051468fd_650c42797dfa975bca462ef6"
+}

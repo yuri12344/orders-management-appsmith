@@ -1,0 +1,13 @@
+UPDATE "order"
+  SET order_status_id = 3,
+carrier = {{sel_carrier.selectedOptionValue}},
+shipping = {{inp_shippingRate.text}},
+shipping_date = {{dat_shippingDate.formattedDate}},
+eta = {{dat_eta.formattedDate}},
+weight_kg = {{inp_kg.text || 0}},
+weight_lbs = {{inp_lbs.text || 0}},
+width = {{inp_width.text || 0}},
+height = {{inp_height.text || 0}},
+length = {{inp_length.text || 0}},
+tracking_no = {{inp_trackingId.text}}
+  WHERE id = {{ appsmith.store.order.Order_id }};
