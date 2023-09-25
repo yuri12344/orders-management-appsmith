@@ -63,7 +63,7 @@
             "tabId": "tab2",
             "widgetName": "Canvas9",
             "displayName": "Canvas",
-            "bottomRow": 770,
+            "bottomRow": 1850,
             "topRow": 0,
             "parentRowSpace": 1,
             "type": "CANVAS_WIDGET",

@@ -16,7 +16,7 @@
     "animateLoading": true,
     "parentColumnSpace": 14.7257080078125,
     "dynamicTriggerPathList": [{"key": "onCheckChange"}],
-    "leftColumn": 0,
+    "leftColumn": 1,
     "dynamicBindingPathList": [
         {"key": "accentColor"},
         {"key": "borderRadius"},
@@ -28,7 +28,7 @@
     "key": "64w3vepad2",
     "isRequired": false,
     "isDeprecated": false,
-    "rightColumn": 2,
+    "rightColumn": 3,
     "dynamicHeight": "FIXED",
     "widgetId": "nliar8zb93",
     "accentColor": "{{appsmith.theme.colors.primaryColor}}",

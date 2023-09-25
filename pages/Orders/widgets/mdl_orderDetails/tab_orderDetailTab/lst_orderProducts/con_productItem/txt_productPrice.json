@@ -7,8 +7,8 @@
         "paragraph",
         "label"
     ],
-    "topRow": 1,
-    "bottomRow": 5,
+    "topRow": 0,
+    "bottomRow": 4,
     "parentRowSpace": 10,
     "type": "TEXT_WIDGET",
     "hideCard": false,
@@ -17,7 +17,7 @@
     "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
     "parentColumnSpace": 14.7257080078125,
     "dynamicTriggerPathList": [],
-    "leftColumn": 44,
+    "leftColumn": 55,
     "dynamicBindingPathList": [
         {"key": "truncateButtonColor"},
         {"key": "fontFamily"},
@@ -26,7 +26,7 @@
     ],
     "shouldTruncate": false,
     "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
-    "text": "$ {{currentItem}}",
+    "text": "{{currentItem.product.price}}",
     "key": "eo9oc7ple7",
     "isDeprecated": false,
     "rightColumn": 60,

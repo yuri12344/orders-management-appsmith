@@ -12,7 +12,6 @@
         {"key": "accentColor"},
         {"key": "borderRadius"},
         {"key": "boxShadow"},
-        {"key": "totalRecordsCount"},
         {"key": "tableData"},
         {"key": "primaryColumns.id.computedValue"},
         {"key": "primaryColumns.company.computedValue"},
@@ -24,7 +23,8 @@
         {"key": "primaryColumns.customer.computedValue"},
         {"key": "primaryColumns.customColumn1.computedValue"},
         {"key": "primaryColumns.date_created.computedValue"},
-        {"key": "primaryColumns.products.computedValue"}
+        {"key": "primaryColumns.products.computedValue"},
+        {"key": "totalRecordsCount"}
     ],
     "leftColumn": 0,
     "delimiter": ",",
@@ -36,7 +36,7 @@
     "isVisible": true,
     "enableClientSideSearch": true,
     "version": 1,
-    "totalRecordsCount": "{{getOrders.data[0].count}}",
+    "totalRecordsCount": "{{getOrdersEndPoint.data[0].count}}",
     "isLoading": false,
     "childStylesheet": {
         "button": {

@@ -28,14 +28,6 @@
         "layoutOnLoadActions": [
           [
             {
-              "id": "Orders_getOrdersEndPoint",
-              "name": "getOrdersEndPoint",
-              "confirmBeforeExecute": false,
-              "pluginType": "API",
-              "jsonPathKeys": [],
-              "timeoutInMillisecond": 10000
-            },
-            {
               "id": "Orders_utils.getOrderTrack",
               "name": "utils.getOrderTrack",
               "collectionId": "Orders_utils",
@@ -49,6 +41,14 @@
           ],
           [
             {
+              "id": "Orders_getOrdersEndPoint",
+              "name": "getOrdersEndPoint",
+              "confirmBeforeExecute": false,
+              "pluginType": "API",
+              "jsonPathKeys": [],
+              "timeoutInMillisecond": 10000
+            },
+            {
               "id": "Orders_utils.init",
               "name": "utils.init",
               "collectionId": "Orders_utils",
@@ -58,19 +58,6 @@
                 "async () => {\n  const shippingDate = dat_shippingDate.formattedDate || new Date().toISOString();\n  storeValue('defaultTab', 'Sales Order');\n  storeValue('carrier', {\n    id: 1,\n    name: 'FedEX',\n    shippingRate: 2.5,\n    shippingDate: shippingDate,\n    Eta: new Date(new Date(shippingDate).getTime() + 4 * 24 * 60 * 60 * 1000).toDateString()\n  });\n}"
               ],
               "timeoutInMillisecond": 10000
-            }
-          ],
-          [
-            {
-              "id": "Orders_getOrders",
-              "name": "getOrders",
-              "confirmBeforeExecute": false,
-              "pluginType": "DB",
-              "jsonPathKeys": [
-                "(tbl_orders.pageNo - 1) * tbl_orders.pageSize",
-                "tbl_orders.pageSize"
-              ],
-              "timeoutInMillisecond": 20000
             }
           ]
         ],

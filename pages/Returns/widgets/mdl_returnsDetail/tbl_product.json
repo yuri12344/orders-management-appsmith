@@ -53,7 +53,7 @@
         }
     },
     "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-    "columnUpdatedAt": 1.68232731496E+12,
+    "columnUpdatedAt": 1682327314960,
     "defaultSelectedRowIndices": [0],
     "widgetName": "tbl_product",
     "defaultPageSize": 0,

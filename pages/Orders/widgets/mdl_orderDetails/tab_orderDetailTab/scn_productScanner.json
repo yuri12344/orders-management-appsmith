@@ -34,7 +34,7 @@
     "widgetId": "8iw19sxc13",
     "onCodeDetected": "{{utils.handleBarCode()}}",
     "isVisible": true,
-    "label": "Scan a QR/Barcode",
+    "label": "Scanear QRCode",
     "version": 1,
     "parentId": "i4qu0q934m",
     "renderMode": "CANVAS",

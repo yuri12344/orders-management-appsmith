@@ -25,7 +25,7 @@
     "leftColumn": 12,
     "shouldTruncate": false,
     "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
-    "text": "{{currentItem.Name}}",
+    "text": "{{currentItem.product.name}}",
     "key": "eo9oc7ple7",
     "isDeprecated": false,
     "rightColumn": 35,

@@ -19,7 +19,7 @@
           "parentRowSpace": 1,
           "type": "CANVAS_WIDGET",
           "canExtend": true,
-          "version": 83,
+          "version": 86,
           "minHeight": 1010,
           "parentColumnSpace": 1,
           "dynamicBindingPathList": [],
@@ -63,7 +63,7 @@
     ],
     "userPermissions": [],
     "policies": [],
-    "isHidden": false
+    "isHidden": true
   },
   "deleted": false,
   "gitSyncId": "650c425727a31f44051468fd_650c42797dfa975bca462ef4"
