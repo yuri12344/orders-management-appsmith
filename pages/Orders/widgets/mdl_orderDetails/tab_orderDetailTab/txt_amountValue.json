@@ -26,7 +26,7 @@
     ],
     "shouldTruncate": false,
     "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
-    "text": "{{appsmith.store.order.Total}}",
+    "text": "{{appsmith.store.order.total}}",
     "key": "lqc0eevjrg",
     "isDeprecated": false,
     "rightColumn": 51,

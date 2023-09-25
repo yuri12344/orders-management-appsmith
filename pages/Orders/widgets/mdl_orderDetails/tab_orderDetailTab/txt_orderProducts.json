@@ -25,7 +25,7 @@
     ],
     "shouldTruncate": false,
     "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
-    "text": "Products",
+    "text": "Produtos",
     "key": "lqc0eevjrg",
     "isDeprecated": false,
     "rightColumn": 17,
@@ -39,10 +39,10 @@
     "parentId": "r4f0j7nibv",
     "renderMode": "CANVAS",
     "isLoading": false,
-    "originalTopRow": 26,
+    "originalTopRow": 46,
     "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
     "maxDynamicHeight": 9000,
-    "originalBottomRow": 30,
+    "originalBottomRow": 50,
     "fontSize": "1rem",
     "minDynamicHeight": 4
 }

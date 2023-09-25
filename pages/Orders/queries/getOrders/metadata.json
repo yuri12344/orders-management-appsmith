@@ -18,7 +18,7 @@
       "timeoutInMillisecond": 20000,
       "paginationType": "NONE",
       "encodeParamsToggle": true,
-      "body": "SELECT public.order.*, location.address1, person.first_name, person.last_name, person.phone, person.email, order_status.label AS status\nFROM public.order\nINNER JOIN location ON public.order.shipping_address = location.id\nINNER JOIN order_status ON public.order.order_status_id = order_status.id\nINNER JOIN account ON public.order.account_id = account.id\nINNER JOIN person ON account.customer_id = person.id\nORDER BY id ASC\nLIMIT {{tbl_orders.pageSize}} OFFSET {{(tbl_orders.pageNo - 1) * tbl_orders.pageSize}};\n\n",
+      "body": "SELECT public.orders.*, location.address1, person.first_name, person.last_name, person.phone, person.email, order_status.label AS status\nFROM public.order\nINNER JOIN location ON public.order.shipping_address = location.id\nINNER JOIN order_status ON public.order.order_status_id = order_status.id\nINNER JOIN account ON public.order.account_id = account.id\nINNER JOIN person ON account.customer_id = person.id\nORDER BY id ASC\nLIMIT {{tbl_orders.pageSize}} OFFSET {{(tbl_orders.pageNo - 1) * tbl_orders.pageSize}};\n",
       "selfReferencingDataPaths": [],
       "pluginSpecifiedTemplates": [
         {
@@ -27,11 +27,7 @@
       ]
     },
     "executeOnLoad": true,
-    "dynamicBindingPathList": [
-      {
-        "key": "body"
-      }
-    ],
+    "dynamicBindingPathList": [],
     "isValid": true,
     "invalids": [],
     "messages": [],
@@ -42,7 +38,8 @@
     "userSetOnLoad": false,
     "confirmBeforeExecute": false,
     "policies": [],
-    "userPermissions": []
+    "userPermissions": [],
+    "createdAt": "2023-09-21T13:17:45Z"
   },
   "id": "Orders_getOrders",
   "deleted": false,

@@ -46,7 +46,7 @@
             "isDisabled": false,
             "key": "p2eiu24f9z",
             "isDeprecated": false,
-            "tabName": "Sales Order",
+            "tabName": "Pedido",
             "rightColumn": 402,
             "detachFromLayout": true,
             "widgetId": "r4f0j7nibv",
@@ -78,7 +78,7 @@
             "isDisabled": false,
             "key": "p2eiu24f9z",
             "isDeprecated": false,
-            "tabName": "Pick and Pack",
+            "tabName": "Separar e enviar",
             "rightColumn": 402,
             "detachFromLayout": true,
             "widgetId": "i4qu0q934m",
@@ -108,7 +108,7 @@
             "dynamicBindingPathList": [],
             "key": "p2eiu24f9z",
             "isDeprecated": false,
-            "tabName": "Ship",
+            "tabName": "Enviar",
             "rightColumn": 1038.5,
             "detachFromLayout": true,
             "widgetId": "2jo43hx72c",
@@ -139,7 +139,7 @@
             "dynamicBindingPathList": [],
             "key": "p2eiu24f9z",
             "isDeprecated": false,
-            "tabName": "Track",
+            "tabName": "Rastrear",
             "rightColumn": 1038.5,
             "detachFromLayout": true,
             "widgetId": "i8kxz9v6xg",
@@ -162,7 +162,7 @@
     "dynamicHeight": "FIXED",
     "widgetId": "5qomekaidx",
     "accentColor": "{{appsmith.theme.colors.primaryColor}}",
-    "defaultTab": "Sales Order",
+    "defaultTab": "Pedido",
     "shouldShowTabs": true,
     "minWidth": 450,
     "tabsObj": {
@@ -171,7 +171,7 @@
             "isDuplicateLabel": false,
             "index": 2,
             "id": "tab973jufgtm0",
-            "label": "Ship",
+            "label": "Enviar",
             "isVisible": "{{\nappsmith.store.order.Status === 'PACKED' || appsmith.store.order.Status === 'SHIPPED' ||\nappsmith.store.order.Status === 'DELIVERED' ||\nappsmith.store.order.Status === 'CANCELLED'\n}}"
         },
         "tab1": {
@@ -179,7 +179,7 @@
             "positioning": "vertical",
             "isDuplicateLabel": false,
             "index": 0,
-            "label": "Sales Order",
+            "label": "Pedido",
             "id": "tab1",
             "isVisible": true
         },
@@ -188,7 +188,7 @@
             "positioning": "vertical",
             "isDuplicateLabel": false,
             "index": 1,
-            "label": "Pick and Pack",
+            "label": "Separar e enviar",
             "id": "tab2",
             "isVisible": true
         },
@@ -196,7 +196,7 @@
             "widgetId": "i8kxz9v6xg",
             "index": 3,
             "id": "tab1oc6ctzihz",
-            "label": "Track",
+            "label": "Rastrear",
             "isVisible": "{{tbl_orders.selectedRow.Status == 'SHIPPED' || tbl_orders.selectedRow.Status == 'DELIVERED'}}"
         }
     },

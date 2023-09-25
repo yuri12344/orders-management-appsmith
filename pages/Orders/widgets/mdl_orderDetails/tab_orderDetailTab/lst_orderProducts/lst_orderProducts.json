@@ -68,7 +68,7 @@
     "currentItemsView": "{{[]}}",
     "triggeredItemView": "{{{}}}",
     "widgetName": "lst_orderProducts",
-    "listData": "{{utils.getOrderProducts.data}}",
+    "listData": "{{appsmith.store.order.products}}",
     "dynamicPropertyPathList": [{"key": "onItemClick"}],
     "displayName": "List",
     "bottomRow": 67,

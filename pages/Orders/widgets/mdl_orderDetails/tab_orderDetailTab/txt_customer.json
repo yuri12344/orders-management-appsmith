@@ -25,7 +25,7 @@
     ],
     "shouldTruncate": false,
     "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
-    "text": "Customer",
+    "text": "Cliente",
     "key": "lqc0eevjrg",
     "isDeprecated": false,
     "rightColumn": 7,
@@ -39,10 +39,10 @@
     "parentId": "r4f0j7nibv",
     "renderMode": "CANVAS",
     "isLoading": false,
-    "originalTopRow": 40,
+    "originalTopRow": 2,
     "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
     "maxDynamicHeight": 9000,
-    "originalBottomRow": 44,
+    "originalBottomRow": 7,
     "fontSize": "1rem",
     "minDynamicHeight": 4
 }

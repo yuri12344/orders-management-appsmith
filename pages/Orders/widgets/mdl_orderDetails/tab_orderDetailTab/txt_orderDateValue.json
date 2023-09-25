@@ -26,7 +26,7 @@
     ],
     "shouldTruncate": false,
     "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
-    "text": "{{new Date(appsmith.store.order.Order_date).toDateString()}}",
+    "text": "{{appsmith.store.order.date_created}}",
     "key": "lqc0eevjrg",
     "isDeprecated": false,
     "rightColumn": 51,

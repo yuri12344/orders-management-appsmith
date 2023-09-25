@@ -320,13 +320,13 @@ export default {
 	},
 
 	statusColor: (status) => {
-		if (status === 'CANCELLED') {
+		if (status === 'Cancelado') {
 			return 'RGB(255, 0, 0)'
 		};
-		if (status === 'UNFULFILLED' || status === 'PACKED') {
+		if (status === 'Não enviado' || status === 'Separado') {
 			return 'RGB(255, 165, 0)';
 		};
-		if (status === 'SHIPPED' || status === 'DELIVERED') {
+		if (status === 'Enviado' || status === 'Recebido') {
 			return 'RGB(0, 128, 0)'
 		}
 		return 'RGB(255, 165, 0)'

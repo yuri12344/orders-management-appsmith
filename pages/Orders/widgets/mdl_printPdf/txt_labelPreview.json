@@ -23,7 +23,7 @@
     ],
     "shouldTruncate": false,
     "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
-    "text": "PDF Preview",
+    "text": "Visualizador de PDF",
     "key": "eygmgbdrld",
     "isDeprecated": false,
     "rightColumn": 41,

@@ -26,7 +26,7 @@
     ],
     "shouldTruncate": false,
     "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
-    "text": "{{appsmith.store.order.Customer}}",
+    "text": "{{appsmith.store.order.customer}}",
     "key": "lqc0eevjrg",
     "isDeprecated": false,
     "rightColumn": 27,
@@ -40,10 +40,10 @@
     "parentId": "r4f0j7nibv",
     "renderMode": "CANVAS",
     "isLoading": false,
-    "originalTopRow": 40,
+    "originalTopRow": 2,
     "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
     "maxDynamicHeight": 9000,
-    "originalBottomRow": 44,
+    "originalBottomRow": 26,
     "fontSize": "1rem",
     "minDynamicHeight": 4
 }

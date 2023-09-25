@@ -26,7 +26,7 @@
     ],
     "shouldTruncate": false,
     "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
-    "text": "{{appsmith.store.order.Phone}}",
+    "text": "{{appsmith.store.order.whatsapp}}",
     "key": "lqc0eevjrg",
     "isDeprecated": false,
     "rightColumn": 27,
@@ -40,10 +40,10 @@
     "parentId": "r4f0j7nibv",
     "renderMode": "CANVAS",
     "isLoading": false,
-    "originalTopRow": 40,
+    "originalTopRow": 27,
     "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
     "maxDynamicHeight": 9000,
-    "originalBottomRow": 44,
+    "originalBottomRow": 31,
     "fontSize": "1rem",
     "minDynamicHeight": 4
 }

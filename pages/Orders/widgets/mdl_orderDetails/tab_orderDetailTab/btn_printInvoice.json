@@ -24,7 +24,7 @@
         {"key": "buttonColor"},
         {"key": "borderRadius"}
     ],
-    "text": "Print Invoice",
+    "text": "Folha pedido",
     "isDisabled": false,
     "key": "2e3p5ebjwm",
     "isDeprecated": false,

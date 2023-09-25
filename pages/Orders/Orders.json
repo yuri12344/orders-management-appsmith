@@ -19,7 +19,7 @@
           "parentRowSpace": 1,
           "type": "CANVAS_WIDGET",
           "canExtend": true,
-          "version": 83,
+          "version": 86,
           "minHeight": 660,
           "parentColumnSpace": 1,
           "dynamicBindingPathList": [],
@@ -28,27 +28,11 @@
         "layoutOnLoadActions": [
           [
             {
-              "id": "Orders_utils.init",
-              "name": "utils.init",
-              "collectionId": "Orders_utils",
+              "id": "Orders_getOrdersEndPoint",
+              "name": "getOrdersEndPoint",
               "confirmBeforeExecute": false,
-              "pluginType": "JS",
-              "jsonPathKeys": [
-                "async () => {\n  const shippingDate = dat_shippingDate.formattedDate || new Date().toISOString();\n  storeValue('defaultTab', 'Sales Order');\n  storeValue('carrier', {\n    id: 1,\n    name: 'FedEX',\n    shippingRate: 2.5,\n    shippingDate: shippingDate,\n    Eta: new Date(new Date(shippingDate).getTime() + 4 * 24 * 60 * 60 * 1000).toDateString()\n  });\n}"
-              ],
-              "timeoutInMillisecond": 10000
-            }
-          ],
-          [
-            {
-              "id": "Orders_utils.getOrderProducts",
-              "name": "utils.getOrderProducts",
-              "collectionId": "Orders_utils",
-              "confirmBeforeExecute": false,
-              "pluginType": "JS",
-              "jsonPathKeys": [
-                "async () => {\n  const orderProducts = await getOrderProducts.run();\n  return orderProducts.map(p => {\n    return {\n      Id: p.id,\n      Name: p.name,\n      SKU: p.sku,\n      Price: p.price,\n      Quantity: p.quantity,\n      Tax: p.taxes,\n      Subtotal: parseInt(p.price) * parseInt(p.quantity),\n      Image: p.image\n    };\n  });\n}"
-              ],
+              "pluginType": "API",
+              "jsonPathKeys": [],
               "timeoutInMillisecond": 10000
             },
             {
@@ -65,13 +49,13 @@
           ],
           [
             {
-              "id": "Orders_utils.getOrders",
-              "name": "utils.getOrders",
+              "id": "Orders_utils.init",
+              "name": "utils.init",
               "collectionId": "Orders_utils",
               "confirmBeforeExecute": false,
               "pluginType": "JS",
               "jsonPathKeys": [
-                "async () => {\n  const orders = await getOrders.run();\n  const fromDate = dat_from.formattedDate || null;\n  const toDate = dat_to.formattedDate || null;\n  let filteredOrders = orders;\n  if (fromDate && toDate) {\n    filteredOrders = filteredOrders.filter(k => new Date(k.created) >= new Date(fromDate) && new Date(k.created) <= new Date(toDate));\n  }\n  if (sel_status.selectedOptionValue) {\n    filteredOrders = filteredOrders.filter(k => k.status === sel_status.selectedOptionValue);\n  }\n  return filteredOrders.map(o => {\n    return {\n      ID: utils.idConverter('OR', o.id),\n      Order_id: o.id,\n      Order_date: o.created,\n      Customer: o.first_name + ' ' + o.last_name,\n      Total: o.total.toLocaleString('en-US', {\n        style: 'currency',\n        currency: 'USD'\n      }),\n      DeliveryFee: o.shipping.toLocaleString('en-US', {\n        style: 'currency',\n        currency: 'USD'\n      }),\n      ShippingAddress: o.address1,\n      Status: o.status,\n      Phone: o.phone,\n      Email: o.email,\n      Carrier: o.carrier,\n      ShippingDate: o.shipping_date,\n      Eta: o.eta,\n      WeightKg: o.weight_kg ? o.weight_kg.toString() : '',\n      WeightLbs: o.weight_lbs ? o.weight_lbs.toString() : '',\n      Width: o.width ? o.width.toString() : '',\n      Length: o.length ? o.length.toString() : '',\n      height: o.height ? o.length.toString() : '',\n      Tracking: o.tracking_no\n    };\n  }).sort((a, b) => a.id - b.id);\n}"
+                "async () => {\n  const shippingDate = dat_shippingDate.formattedDate || new Date().toISOString();\n  storeValue('defaultTab', 'Sales Order');\n  storeValue('carrier', {\n    id: 1,\n    name: 'FedEX',\n    shippingRate: 2.5,\n    shippingDate: shippingDate,\n    Eta: new Date(new Date(shippingDate).getTime() + 4 * 24 * 60 * 60 * 1000).toDateString()\n  });\n}"
               ],
               "timeoutInMillisecond": 10000
             }

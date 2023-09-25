@@ -7,8 +7,8 @@
         "paragraph",
         "label"
     ],
-    "topRow": 17,
-    "bottomRow": 21,
+    "topRow": 12,
+    "bottomRow": 16,
     "parentRowSpace": 10,
     "type": "TEXT_WIDGET",
     "hideCard": false,
@@ -17,7 +17,7 @@
     "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
     "parentColumnSpace": 10.40625,
     "dynamicTriggerPathList": [],
-    "leftColumn": 30,
+    "leftColumn": 1,
     "dynamicBindingPathList": [
         {"key": "truncateButtonColor"},
         {"key": "fontFamily"},
@@ -25,10 +25,10 @@
     ],
     "shouldTruncate": false,
     "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
-    "text": "Shipping Address",
+    "text": "Endereço",
     "key": "lqc0eevjrg",
     "isDeprecated": false,
-    "rightColumn": 40,
+    "rightColumn": 8,
     "textAlign": "LEFT",
     "dynamicHeight": "AUTO_HEIGHT",
     "widgetId": "mg8l8ns516",
@@ -42,7 +42,7 @@
     "originalTopRow": 18,
     "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
     "maxDynamicHeight": 9000,
-    "originalBottomRow": 22,
+    "originalBottomRow": 23,
     "fontSize": "1rem",
     "minDynamicHeight": 4
 }
